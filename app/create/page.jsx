@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import LogoTitle from './_compenents/LogoTitle'
 import { Button } from '@/components/ui/button'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
+import LogoDesc from './_compenents/LogoDesc'
+import LogoPalette from './_compenents/LogoPalette'
+import LogoDesigns from './_compenents/LogoDesigns'
+import LogoIdea from './_compenents/LogoIdea'
 
 function CreateLogo() {
   const [step, setStep] = useState(1);
@@ -12,14 +16,23 @@ function CreateLogo() {
       ...prev,
       [field]:value
     }))
+    
+    console.log(formData)
   }
 
   return (
     <div className='mt-28 p-10 border rounded-xl 2xl:mx-72'>
       {step==1?
       <LogoTitle onHandleInputChange={(v)=>onHandleInputChange('title', v)}/> :
+      step==2?
+      <LogoDesc onHandleInputChange={(v)=>onHandleInputChange('desc', v)} /> :
+      step==3?
+      <LogoPalette onHandleInputChange={(v)=>onHandleInputChange('palette', v)}/> :
+      step==4?
+      <LogoDesigns onHandleInputChange={(v)=>onHandleInputChange('design', v)}/> :
+      step==5?
+      <LogoIdea onHandleInputChange={(v)=>onHandleInputChange('idea', v)}/>:
       null
-
       }
 
       <div className='flex items-center justify-between'>
